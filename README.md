@@ -23,3 +23,7 @@ git clone https://github.com/exira/docker-data-wordpress.git
 cd docker-data-wordpress
 docker build -t exira/data-wordpress .
 ```
+
+## Using this image
+
+This images exposes the Wordpress files using a volume `/var/www`

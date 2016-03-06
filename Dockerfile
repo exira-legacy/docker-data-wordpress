@@ -16,6 +16,8 @@ RUN apk update && \
     #echo "${WORDPRESS_SHA1} /tmp/wordpress.tar.gz" | sha1sum -c - && \
     mkdir /var/www/ && \
     tar xvfz /tmp/wordpress.tar.gz -C /var/www && \
+    mv /var/www/wordpress/* /var/www/ && \
+    rmdir /var/www/wordpress && \
     rm -f /tmp/wordpress.tar.gz && \
 
     # cleanup
