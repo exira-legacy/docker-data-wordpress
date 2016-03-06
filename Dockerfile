@@ -20,8 +20,17 @@ RUN apk update && \
     rmdir /var/www/wordpress && \
     rm -f /tmp/wordpress.tar.gz && \
 
+    # add www-data user
+    mkdir -p /home/www-data && \
+    addgroup -g 433 -S www-data && \
+    adduser -u 431 -S -D -G www-data -h /home/www-data -s /sbin/nologin www-data && \
+    chown -R www-data:www-data /home/www-data && \
+    chown -R www-data:www-data /var/www && \
+
     # cleanup
     apk del wget && \
     rm -rf /var/cache/apk/*
+
+WORKDIR /var/www/
 
 VOLUME /var/www/
