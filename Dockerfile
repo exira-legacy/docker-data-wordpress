@@ -25,11 +25,14 @@ RUN apk update && \
     addgroup -g 433 -S www-data && \
     adduser -u 431 -S -D -G www-data -h /home/www-data -s /sbin/nologin www-data && \
     chown -R www-data:www-data /home/www-data && \
-    chown -R www-data:www-data /var/www && \
 
     # cleanup
     apk del wget && \
     rm -rf /var/cache/apk/*
+
+ADD root /
+
+RUN chown -R www-data:www-data /var/www
 
 WORKDIR /var/www/
 
