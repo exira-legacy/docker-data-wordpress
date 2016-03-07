@@ -26,4 +26,4 @@ docker build -t exira/data-wordpress .
 
 ## Using this image
 
-This images exposes the Wordpress files using a volume `/var/www`
+This images exposes the Wordpress files using a volume `/var/www/` with the files itself located in `/var/www/public_html/`

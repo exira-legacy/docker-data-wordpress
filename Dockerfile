@@ -14,10 +14,10 @@ RUN apk update && \
     cd /tmp/wp/ && \
     wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz --no-check-certificate -O /tmp/wordpress.tar.gz && \
     #echo "${WORDPRESS_SHA1} /tmp/wordpress.tar.gz" | sha1sum -c - && \
-    mkdir /var/www/ && \
-    tar xvfz /tmp/wordpress.tar.gz -C /var/www && \
-    mv /var/www/wordpress/* /var/www/ && \
-    rmdir /var/www/wordpress && \
+    mkdir -p /var/www/public_html/ && \
+    tar xvfz /tmp/wordpress.tar.gz -C /var/www/public_html && \
+    mv /var/www/public_html/wordpress/* /var/www/public_html/ && \
+    rmdir /var/www/public_html/wordpress && \
     rm -f /tmp/wordpress.tar.gz && \
 
     # add www-data user
