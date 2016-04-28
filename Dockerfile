@@ -13,7 +13,7 @@ RUN apk update && \
     mkdir /tmp/wp/ && \
     cd /tmp/wp/ && \
     wget https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz --no-check-certificate -O /tmp/wordpress.tar.gz && \
-    #echo "${WORDPRESS_SHA1} /tmp/wordpress.tar.gz" | sha1sum -c - && \
+    if [ "${WORDPRESS_SHA1}" != "$(sha1sum /tmp/wordpress.tar.gz | awk '{print($1)}')" ];then echo "Wrong sha1sum of downloaded file!"; exit 1; fi && \
     mkdir -p /var/www/public_html/ && \
     tar xvfz /tmp/wordpress.tar.gz -C /var/www/public_html && \
     mv /var/www/public_html/wordpress/* /var/www/public_html/ && \
